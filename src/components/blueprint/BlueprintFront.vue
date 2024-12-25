@@ -5,7 +5,7 @@ import CommonButton from "../common/CommonButton.vue";
 
 const blueprintEnable = ref(false);
 const bluePrintList = defineModel("bluePrintList");
-const defaultSelectedBlueprint = defineModel("defaultSelectedBlueprint");
+const defaultSelectedBlueprint = bluePrintList.value[0].id
 </script>
 
 <template>

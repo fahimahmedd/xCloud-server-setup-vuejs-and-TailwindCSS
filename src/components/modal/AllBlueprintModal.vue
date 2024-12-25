@@ -3,7 +3,6 @@ import AllBlueprint from "../chooseProvider/AllBlueprint.vue";
 
 const emit = defineEmits(["onCreateBlueprint"]);
 const bluePrintList = defineModel("bluePrintList");
-const defaultSelectedBlueprint = defineModel("defaultSelectedBlueprint");
 </script>
 
 <template>
@@ -55,7 +54,6 @@ const defaultSelectedBlueprint = defineModel("defaultSelectedBlueprint");
           >
             <AllBlueprint
               v-model:bluePrintList="bluePrintList"
-              v-model:defaultSelectedBlueprint="defaultSelectedBlueprint"
             />
           </div>
           <!-- Modal footer -->

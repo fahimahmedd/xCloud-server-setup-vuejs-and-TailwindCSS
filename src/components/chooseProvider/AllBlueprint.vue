@@ -3,7 +3,7 @@ import CommonButton from "../common/CommonButton.vue";
 import BlueprintItems from "../blueprint/BlueprintItems.vue";
 
 const bluePrintList = defineModel("bluePrintList");
-const defaultSelectedBlueprint = defineModel("defaultSelectedBlueprint");
+const defaultSelectedBlueprint = bluePrintList.value[0].id
 </script>
 
 <template>

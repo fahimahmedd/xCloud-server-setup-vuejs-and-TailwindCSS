@@ -11,7 +11,6 @@ const serverType = ref("live");
 const options = ref(["Option 1", "Option 2"]);
 const filteredOptions = ref([...options.value]);
 const bluePrintList = defineModel("bluePrintList");
-const defaultSelectedBlueprint = defineModel("defaultSelectedBlueprint");
 
 const filterOptions = () => {
   if (tag.value === "") {
@@ -137,7 +136,6 @@ const submitHandler = () => {
         <TypeItem v-model:type="serverType" />
         <BlueprintFront
           v-model:bluePrintList="bluePrintList"
-          v-model:defaultSelectedBlueprint="defaultSelectedBlueprint"
         />
 
         <div class="advance-options flex items-center mt-5">

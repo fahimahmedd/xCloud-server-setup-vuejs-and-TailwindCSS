@@ -5,7 +5,6 @@ import CreateBlueprintModal from "@/components/modal/CreateBlueprintModal.vue";
 import { ref, watch } from "vue";
 
 const nameNotify = ref(false);
-const selectedHint = ref([]);
 const bluePrintList = ref([
   { id: 1, name: "Blueprint - 1", pluginList: ["A", "B", "C", "D", "E"] },
   { id: 2, name: "Blueprint - 2", pluginList: ["C", "D", "E"] },
@@ -127,25 +126,13 @@ const pluginList = ref([
   },
 ]);
 
-const defaultSelectedBlueprint = ref(bluePrintList.value[0].id);
+const selectedHint = ref([]);
 
 const singleBlueprint = ref({
   id: pluginList.value.length + 1,
   name: null,
   plugin: [],
 });
-
-watch(
-  selectedHint,
-  () => {
-    singleBlueprint.value.plugin = singleBlueprint.value.plugin.filter(
-      (item) => {
-        return selectedHint.value.some((item2) => item2.hint === item);
-      }
-    );
-  },
-  { deep: true }
-);
 
 const createBlueprint = () => {
   if (singleBlueprint.value.name && singleBlueprint.value.name.trim() !== "") {
@@ -168,14 +155,25 @@ const createBlueprint = () => {
     nameNotify.value = true;
   }
 };
+
+watch(
+  selectedHint,
+  () => {
+    singleBlueprint.value.plugin = singleBlueprint.value.plugin.filter(
+      (item) => {
+        return selectedHint.value.some((item2) => item2.hint === item);
+      }
+    );
+  },
+  { deep: true }
+);
+
+
 </script>
 
 <template>
   <div class="container mx-auto flex items-center justify-center">
-    <Setup
-      v-model:bluePrintList="bluePrintList"
-      v-model:defaultSelectedBlueprint="defaultSelectedBlueprint"
-    />
+    <Setup v-model:bluePrintList="bluePrintList" />
   </div>
   <CreateBlueprintModal
     v-model:singleBlueprint="singleBlueprint"
@@ -186,6 +184,5 @@ const createBlueprint = () => {
   />
   <AllBlueprintModal
     v-model:bluePrintList="bluePrintList"
-    v-model:defaultSelectedBlueprint="defaultSelectedBlueprint"
   />
 </template>
