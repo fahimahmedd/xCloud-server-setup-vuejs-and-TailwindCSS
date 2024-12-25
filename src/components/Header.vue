@@ -14,10 +14,10 @@ const menuItems = [
   <header class="bg-white dark:bg-darkBackgroundSecondary border-b border-lightBorder dark:border-[#313a6cbd]">
     <div class="container mx-auto flex justify-between items-center py-2 md:py-3">
       <a href="/" class="h-8 md:h-10 hidden dark:block">
-        <img src="/public/images/logo/logo-dark.png" alt="" class="h-full" />
+        <img src="/images/logo/logo-dark.png" alt="" class="h-full" />
       </a>
       <a href="/" class="flex items-center h-8 md:h-10 visible dark:hidden">
-        <img src="/public/images/logo/logo-light.png" alt="" class="h-full" />
+        <img src="/images/logo/logo-light.png" alt="" class="h-full" />
       </a>
       <div class="flex items-center gap-1 md:gap-3">
         <ThemeToggle />
@@ -34,7 +34,7 @@ const menuItems = [
           >
         </div>
         <Dropdown
-          avatar="/public/images/profile.png"
+          avatar="/images/profile.png"
           text="Mark Adam"
           :menuItems="menuItems"
         />
