@@ -49,14 +49,13 @@ The project is centered around a single-view page and consists of the following 
    - Root component manages the data and passes it down to child components.
    - Modals interact seamlessly with the main setup component.
 
-## 🚀 How to Run the Project
 
 ## Live Preview 🌐
 Experience the project live: View Demo
 [**View Demo**](https://xcloud-task.netlify.app/)
 
+## 🚀 How to Run the Project
 
-## Installation
  To install and set up this Vue.js Vite project, follow these steps:
 
 ```bash
