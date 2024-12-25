@@ -23,35 +23,36 @@ const props = defineProps({
     required: true,
   },
 });
-
 </script>
 
 <template>
   <div class="relative inline-block text-left ml-2 md:ml-3">
     <button
-        type="button"
-        class="inline-flex gap-0 md:gap-2 w-full justify-center rounded-md items-center border px-1.5 py-1.5 border-lightBorder dark:border-darkBorder"
-        id="menu-button"
-        aria-expanded="true"
-        aria-haspopup="true"
-        @click="toggleDropdown"
+      type="button"
+      class="inline-flex gap-0 md:gap-2 w-full justify-center rounded-md items-center border px-1.5 py-1.5 border-lightBorder dark:border-darkBorder"
+      id="menu-button"
+      aria-expanded="true"
+      aria-haspopup="true"
+      @click="toggleDropdown"
+    >
+      <img :src="avatar" alt="" class="h-8" />
+      <p class="text-black dark:text-white text-[14px] hidden md:block">
+        {{ text }}
+      </p>
+      <svg
+        class="-mr-1 size-5 text-gray-400"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+        data-slot="icon"
       >
-        <img :src="avatar" alt="" class="h-8" />
-        <p class="text-black dark:text-white text-[14px] hidden md:block">{{ text }}</p>
-        <svg
-          class="-mr-1 size-5 text-gray-400"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-          data-slot="icon"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </button>
+        <path
+          fill-rule="evenodd"
+          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
     <div
       class="absolute right-0 z-10 w-40 origin-top-right rounded-md bg-white dark:bg-[#4e5e7c] shadow-lg ring-1 ring-black/5 focus:outline-none"
       role="menu"
@@ -62,7 +63,8 @@ const props = defineProps({
     >
       <div class="py-1" role="none">
         <a
-           v-for="(item , index) in menuItems" :key="index"
+          v-for="(item, index) in menuItems"
+          :key="index"
           :href="item.link"
           class="block px-4 py-2 text-xs text-gray-700 dark:text-white hover:bg-gray-200"
           role="menuitem"

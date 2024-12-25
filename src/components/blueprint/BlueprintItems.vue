@@ -1,6 +1,4 @@
 <script setup>
-import { defineProps, defineModel } from "vue";
-
 const props = defineProps({
   item: {
     type: Object,
@@ -28,13 +26,15 @@ const colors = ["bg-teal-300", "bg-green-300", "bg-blue-300"];
     />
     <label
       :for="item.id + index"
-      class="w-full border border-lightBorder dark:border-[#313A6C] bg-white dark:bg-darkBackgroundSecondary rounded-md px-4 py-3 relative cursor-pointer  peer-checked:border-darkPrimary transition-all group"
+      class="w-full border border-lightBorder dark:border-[#313A6C] bg-white dark:bg-darkBackgroundSecondary rounded-md px-4 py-3 relative cursor-pointer peer-checked:border-darkPrimary transition-all group"
     >
-      <h5 class="text-gray-800 dark:text-white font-medium dark:font-light text-sm">
+      <h5
+        class="text-gray-800 dark:text-white font-medium dark:font-light text-sm"
+      >
         {{ item.name }}
         <span
-          v-if="item.id === selectedBlueprint"
-          class="text-xs py-1 px-3 ml-1 bg-[#313A6C] rounded-md text-white"
+          v-if="item.id === defaultSelectedBlueprint"
+          class="text-xs py-1 px-3 ml-1 bg-lightBackgroundSecondary dark:bg-[#313A6C] rounded-md text-gray-700 dark:text-white"
           >default</span
         >
       </h5>
@@ -44,7 +44,7 @@ const colors = ["bg-teal-300", "bg-green-300", "bg-blue-300"];
           :key="index"
           :class="[
             'h-6 w-6 text-xs text-[#45698a] font-medium flex items-center justify-center rounded-sm',
-            colors[index % colors.length], 
+            colors[index % colors.length],
           ]"
         >
           {{ pluginItem }}

@@ -160,8 +160,10 @@ const createBlueprint = () => {
     singleBlueprint.value.plugin = [];
     selectedHint.value = [];
     nameNotify.value = false;
-    document.querySelector('[data-modal-hide="create-blueprint-modal"]').click()
-    document.querySelector('[data-modal-show="all-blueprint-modal"]').click()
+    document
+      .querySelector('[data-modal-hide="create-blueprint-modal"]')
+      .click();
+    document.querySelector('[data-modal-show="all-blueprint-modal"]').click();
   } else {
     nameNotify.value = true;
   }

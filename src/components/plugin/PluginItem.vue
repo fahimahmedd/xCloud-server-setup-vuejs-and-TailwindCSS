@@ -1,21 +1,20 @@
 <script setup>
-import { defineModel, defineEmits } from "vue";
-
-const pluginList = defineModel('pluginList');
-const singleBlueprint = defineModel('singleBlueprint');
-const selectedHint = defineModel('selectedHint');
+const pluginList = defineModel("pluginList");
+const singleBlueprint = defineModel("singleBlueprint");
+const selectedHint = defineModel("selectedHint");
 
 const updateHint = (name, hint, isChecked) => {
   const hintObject = { name, hint };
   if (isChecked) {
-    if (!selectedHint.value.some(item => item.hint === hint)) {
+    if (!selectedHint.value.some((item) => item.hint === hint)) {
       selectedHint.value.push(hintObject);
     }
   } else {
-    selectedHint.value = selectedHint.value.filter(item => item.hint !== hint);
+    selectedHint.value = selectedHint.value.filter(
+      (item) => item.hint !== hint
+    );
   }
 };
-
 </script>
 
 <template>
@@ -26,12 +25,12 @@ const updateHint = (name, hint, isChecked) => {
         :id="`plugin-${item.id}`"
         :value="item.hint"
         v-model="singleBlueprint.plugin"
-        @change="updateHint(item.name , item.hint , $event.target.checked)"
-        class="peer absolute right-3 top-3 h-5 w-5 rounded-full bg-white dark:bg-[#232a4d] border border-lightBorder dark:border-darkBorder focus:bg-lightPrimary dark:focus:bg-transparent focus:ring-0 focus:outline-none checked:bg-lightPrimary dark:checked:bg-transparent"
+        @change="updateHint(item.name, item.hint, $event.target.checked)"
+        class="peer absolute right-3 top-3 h-5 w-5 rounded-full bg-white dark:bg-[#232a4d] border border-lightBorder dark:border-darkBorder focus:ring-0 focus:outline-0 dark:focus:border-darkPrimary dark:focus:outline-0 dark:focus:ring-0"
       />
       <label
         :for="`plugin-${item.id}`"
-        class="inline-flex items-center justify-between w-full text-darkText bg-lightBackgroundSecondary dark:bg-darkBackground border border-lightBorder dark:border-darkBorder rounded-md cursor-pointer peer-checked:border-darkPrimary"
+        class="inline-flex items-center justify-between w-full text-darkText bg-lightBackgroundSecondary dark:bg-darkBackground border border-lightBorder dark:border-darkBorder rounded-md cursor-pointer peer-checked:border-darkPrimary dark:"
       >
         <div class="block">
           <div class="flex p-3">
@@ -43,7 +42,11 @@ const updateHint = (name, hint, isChecked) => {
               </div>
             </div>
             <div class="pl-2">
-              <h5 class="text-gray-900 dark:text-white font-medium dark:font-normal text-sm">{{ item.name }}</h5>
+              <h5
+                class="text-gray-900 dark:text-white font-medium dark:font-normal text-sm"
+              >
+                {{ item.name }}
+              </h5>
               <p class="text-xs py-2">{{ item.detail }}</p>
               <p class="text-xs text-gray-800 dark:text-[#cbcbcb] font-light">
                 <span class="text-darkText">By:</span> {{ item.auth }}

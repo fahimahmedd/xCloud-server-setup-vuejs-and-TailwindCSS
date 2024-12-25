@@ -1,20 +1,20 @@
 <template>
-    <div
-      @click="toggleTheme"
-      class="inline-block"
+  <div @click="toggleTheme" class="inline-block">
+    <button v-if="isDarkMode" class="theme-button">
+      <ion-icon name="sunny" class="text-xl"></ion-icon>
+    </button>
+    <button
+      v-else
+      class="theme-button bg-lightBackgroundSecondary hover:bg-lightSecondaryBgHover text-lightText"
     >
-      <button v-if="isDarkMode" class="theme-button ">
-        <ion-icon name="sunny" class="text-xl"></ion-icon>
-      </button>
-      <button v-else class="theme-button bg-lightBackgroundSecondary hover:bg-lightSecondaryBgHover text-lightText">
-        <ion-icon name="moon"></ion-icon>
-      </button>
-    </div>
+      <ion-icon name="moon"></ion-icon>
+    </button>
+  </div>
 </template>
 
 <script setup>
-import { useThemeStore } from '@/stores/useTheme';
-import { computed } from 'vue';
+import { useThemeStore } from "@/stores/useTheme";
+import { computed } from "vue";
 
 const themeStore = useThemeStore();
 const isDarkMode = computed(() => themeStore.isDarkMode);
@@ -24,7 +24,4 @@ const toggleTheme = () => {
 };
 </script>
 
-<style lang="scss" scoped>
-
-
-</style>
+<style lang="scss" scoped></style>
