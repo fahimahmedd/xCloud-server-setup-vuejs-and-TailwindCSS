@@ -1,7 +1,6 @@
 <script setup>
 import AllBlueprint from "../chooseProvider/AllBlueprint.vue";
 
-const emit = defineEmits(["onCreateBlueprint"]);
 const bluePrintList = defineModel("bluePrintList");
 </script>
 
