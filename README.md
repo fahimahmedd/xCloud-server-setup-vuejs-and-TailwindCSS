@@ -2,6 +2,10 @@
 
 This repository showcases a **Vue.js 3** project built with the **Composition API**, **TailwindCSS**, and a plugin called **Flowbite**. The project also uses **Pinia** for state management (primarily to toggle between Dark Mode and Day Mode).
 
+## Live Preview 🌐
+Experience the project live: View Demo
+[**View Demo**](https://xcloud-task.netlify.app/)
+
 ## 🌟 Features
 
 - **Vue 3 Composition API**: Modern approach to building reactive components.
@@ -49,10 +53,6 @@ The project is centered around a single-view page and consists of the following 
    - Root component manages the data and passes it down to child components.
    - Modals interact seamlessly with the main setup component.
 
-
-## Live Preview 🌐
-Experience the project live: View Demo
-[**View Demo**](https://xcloud-task.netlify.app/)
 
 ## 🚀 How to Run the Project
 
