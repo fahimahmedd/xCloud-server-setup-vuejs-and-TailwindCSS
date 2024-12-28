@@ -4,7 +4,6 @@ import AllBlueprintModal from "@/components/modal/AllBlueprintModal.vue";
 import CreateBlueprintModal from "@/components/modal/CreateBlueprintModal.vue";
 import { ref, watch } from "vue";
 
-const nameNotify = ref(false);
 const bluePrintList = ref([
   { id: 1, name: "Blueprint - 1", pluginList: ["A", "B", "C", "D", "E"] },
   { id: 2, name: "Blueprint - 2", pluginList: ["C", "D", "E"] },
@@ -134,8 +133,11 @@ const singleBlueprint = ref({
   plugin: [],
 });
 
+const nameNotify = ref(false);
+const addPluginNotify = ref(false);
+
 const createBlueprint = () => {
-  if (singleBlueprint.value.name && singleBlueprint.value.name.trim() !== "") {
+  if (singleBlueprint.value.name && singleBlueprint.value.name.trim() && singleBlueprint.value.plugin.length > 0 ) {
     const newBlueprint = {
       id: bluePrintList.value.length + 1,
       name: singleBlueprint.value.name,
@@ -147,12 +149,19 @@ const createBlueprint = () => {
     singleBlueprint.value.plugin = [];
     selectedHint.value = [];
     nameNotify.value = false;
+    addPluginNotify.value = false;
     document
       .querySelector('[data-modal-hide="create-blueprint-modal"]')
       .click();
     document.querySelector('[data-modal-show="all-blueprint-modal"]').click();
   } else {
-    nameNotify.value = true;
+    if (!singleBlueprint.value.name || !singleBlueprint.value.name.trim()) {
+      nameNotify.value = true;
+    }
+
+    if (singleBlueprint.value.plugin.length === 0) {
+      addPluginNotify.value = true;
+    }
   }
 };
 
@@ -180,6 +189,7 @@ watch(
     v-model:pluginList="pluginList"
     v-model:selectedHint="selectedHint"
     v-model:nameNotify="nameNotify"
+    v-model:addPluginNotify="addPluginNotify"
     @onCreateBlueprint="createBlueprint"
   />
   <AllBlueprintModal

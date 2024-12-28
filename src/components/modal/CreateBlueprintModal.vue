@@ -4,6 +4,7 @@ import CreateBlueprint from "../blueprint/CreateBlueprint.vue";
 const pluginList = defineModel("pluginList");
 const singleBlueprint = defineModel("singleBlueprint");
 const nameNotify = defineModel("nameNotify");
+const addPluginNotify = defineModel("addPluginNotify");
 const selectedHint = defineModel("selectedHint");
 const emit = defineEmits(["onCreateBlueprint"]);
 </script>
@@ -56,6 +57,7 @@ const emit = defineEmits(["onCreateBlueprint"]);
             <CreateBlueprint
               v-model:singleBlueprint="singleBlueprint"
               v-model:nameNotify="nameNotify"
+              v-model:addPluginNotify="addPluginNotify"
               v-model:selectedHint="selectedHint"
               v-model:pluginList="pluginList"
             />
@@ -71,6 +73,14 @@ const emit = defineEmits(["onCreateBlueprint"]);
             >
               Next
             </button>
+
+            <button
+                data-modal-show="all-blueprint-modal"
+                type="button"
+                class="text-white mt-4 hidden"
+              >
+                Submit
+              </button>
           </div>
         </form>
       </div>

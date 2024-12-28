@@ -10,7 +10,7 @@ const defaultSelectedBlueprint = bluePrintList.value[0].id
   <div class="flex items-center justify-end">
     <CommonButton
       data-modal-target="create-blueprint-modal"
-      data-modal-toggle="create-blueprint-modal"
+      data-modal-show="create-blueprint-modal"
     >
       <template #icon>
         <ion-icon name="add" class="text-lg"></ion-icon>
@@ -24,7 +24,7 @@ const defaultSelectedBlueprint = bluePrintList.value[0].id
     <div v-for="(item, index) in bluePrintList" :key="index">
       <BlueprintItems
         :item="item"
-        :index="index + 2"
+        :index="index + 1"
         v-model:defaultSelectedBlueprint="defaultSelectedBlueprint"
       />
     </div>

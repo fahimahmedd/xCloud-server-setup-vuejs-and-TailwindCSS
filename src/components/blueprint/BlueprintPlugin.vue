@@ -9,7 +9,6 @@ const selectedHint = defineModel("selectedHint");
 
 <template>
   <PluginHint
-    v-model:pluginList="pluginList"
     v-model:selectedHint="selectedHint"
   />
   <PluginItem

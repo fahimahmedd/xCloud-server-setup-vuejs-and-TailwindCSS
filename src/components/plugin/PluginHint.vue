@@ -23,7 +23,17 @@ const colors = [
         'flex items-center relative group hover:-top-0 md:hover:-top-2 h-10 w-10 cursor-pointer justify-center text-xl font-medium text-[#41668a] rounded-md',
         colors[index % colors.length],
       ]"
+      data-tooltip-target="tooltip-default"
     >
+      <div
+        class="absolute opacity-0 min-w-16 group-hover:opacity-100 text-center -top-0 group-hover:-top-8 z-10 font-light inline-block px-2 py-1 text-xs dark:text-white text-[#3b3a3a] transition-opacity duration-300 bg-[#c9d9eb] rounded-lg shadow-sm dark:bg-[#37406d]"
+      >
+        {{ item.name }}
+        <span
+          class="absolute w-2.5 h-2.5 bg-[#c9d9eb] dark:bg-[#37406d] rotate-45 -bottom-1 left-1/2 -translate-x-1/2"
+          aria-hidden="true"
+        ></span>
+      </div>
       {{ item.hint }}
       <div
         @click="removeHint(index)"

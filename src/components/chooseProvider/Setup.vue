@@ -31,16 +31,6 @@ const closeDropdown = () => {
   setTimeout(() => (dropdownOpen.value = false), 100);
 };
 
-const submitHandler = () => {
-  const serverSetup = ref({
-    name: serverName.value,
-    tag: tag.value,
-    type: serverType.value,
-  });
-  console.log(serverSetup);
-};
-
-
 </script>
 
 <template>
@@ -79,7 +69,7 @@ const submitHandler = () => {
                 id="title"
                 placeholder="Example Site"
                 v-model="serverName"
-                class="w-full h-[52px] bg-transparent border rounded-md px-4 text-sm text-black dark:text-white border-lightBorder dark:border-darkBorder outline-none placeholder-gray-400 placeholder:text-sm"
+                class="input-style"
                 type="text"
               />
             </div>
@@ -95,7 +85,7 @@ const submitHandler = () => {
                 type="text"
                 id="type-dropdown"
                 placeholder="Search or select..."
-                class="w-full h-[52px] bg-transparent border rounded-md px-4 text-sm text-black dark:text-white border-lightBorder dark:border-darkBorder outline-none placeholder-gray-400 placeholder:text-sm"
+                class="input-style"
                 @input="filterOptions"
                 @focus="dropdownOpen = true"
                 @blur="closeDropdown"
@@ -133,10 +123,8 @@ const submitHandler = () => {
           </div>
         </div>
 
-        <TypeItem v-model:type="serverType" />
-        <BlueprintFront
-          v-model:bluePrintList="bluePrintList"
-        />
+        <TypeItem v-model:serverType="serverType" />
+        <BlueprintFront v-model:bluePrintList="bluePrintList" />
 
         <div class="advance-options flex items-center mt-5">
           <button
@@ -147,14 +135,6 @@ const submitHandler = () => {
             <ion-icon name="chevron-down" class="text-lg"></ion-icon>
           </button>
         </div>
-        <button
-          data-modal-show="all-blueprint-modal"
-          type="button"
-          class="text-white mt-4 hidden"
-          @click="submitHandler"
-        >
-          Submit
-        </button>
       </div>
     </form>
   </div>

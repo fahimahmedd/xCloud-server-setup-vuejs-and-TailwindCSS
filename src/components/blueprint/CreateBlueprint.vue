@@ -5,10 +5,14 @@ import BlueprintPlugin from "./BlueprintPlugin.vue";
 const pluginList = defineModel("pluginList");
 const singleBlueprint = defineModel("singleBlueprint");
 const nameNotify = defineModel("nameNotify");
+const addPluginNotify = defineModel("addPluginNotify");
 const selectedHint = defineModel("selectedHint");
 
 const nameNotifyHandle = () => {
   nameNotify.value = !nameNotify.value;
+};
+const addPluginNotifyHandle = () => {
+  addPluginNotify.value = !addPluginNotify.value;
 };
 </script>
 
@@ -59,13 +63,12 @@ const nameNotifyHandle = () => {
       </svg>
     </button>
   </div>
-
-  <div>
+  <div class="pt-1">
     <input
       type="text"
       id=""
       v-model="singleBlueprint.name"
-      class="bg-green-50 border bg-transparent border-lightBorder dark:border-green-500 placeholder-gray-500 dark:placeholder-[#747e94] text-black dark:text-white text-sm rounded-md outline-none focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+      class="bg-green-50 border bg-transparent border-lightBorder focus:border-green-400 dark:border-darkBorder placeholder-gray-500 dark:placeholder-[#747e94] text-black dark:text-white text-sm rounded-md block w-full p-2.5"
       placeholder="Name your blueprint"
       required=""
     />
@@ -167,10 +170,58 @@ const nameNotifyHandle = () => {
       role="tabpanel"
       aria-labelledby="dashboard-tab"
     >
+      <!-- Blueprint Name Notify-->
+      <div
+        id="blueprint-name"
+        :class="{ hidden: !addPluginNotify, block: addPluginNotify }"
+        class="flex items-center px-4 py-2 mb-4 rounded-lg border border-red-300 dark:border-[#d28d394b] bg-red-50 dark:bg-[#73563823] text-red-500 dark:text-[#A1A7BA]"
+        role="alert"
+      >
+        <svg
+          class="flex-shrink-0 w-4 h-4"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div class="ms-3 tfont-thin text-xs md:text-sm">
+          Warning: You must select at least 1 plugin for your Blueprint
+        </div>
+        <button
+          type="button"
+          class="ms-auto -mx-1.5 -my-1.5 bg-white text-red-500 rounded-lg focus:ring-2 dark:focus:ring-yellow-400 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-6 w-6 dark:bg-gray-800 dark:text-yellow-300 dark:hover:bg-gray-700"
+          @click="addPluginNotifyHandle"
+          aria-label="Close"
+        >
+          <span class="sr-only">Close</span>
+          <svg
+            class="w-2.5 h-2.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+        </button>
+      </div>
+
       <BlueprintPlugin
         v-model:singleBlueprint="singleBlueprint"
         v-model:pluginList="pluginList"
         v-model:selectedHint="selectedHint"
+        v-model:addPluginNotify="addPluginNotify"
       />
     </div>
     <div

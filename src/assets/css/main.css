@@ -18,4 +18,11 @@ body {
   .theme-button {
     @apply flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 text-gray-100 hover:bg-gray-600 hover:shadow-lg transition duration-300;
   }
+  .input-style{
+    @apply w-full h-[52px] bg-transparent border rounded-md px-4 text-sm text-black dark:text-white border-lightBorder dark:border-darkBorder outline-none placeholder-gray-400 placeholder:text-sm
+  }
+  .type-lable{
+    @apply w-full flex items-center border hover:bg-lightBackgroundSecondary dark:hover:bg-[#56678327] border-lightBorder dark:border-[#313A6C] p-3 cursor-pointer rounded-md peer-checked:border-2 peer-checked:border-darkPrimary
+  }
+
 }

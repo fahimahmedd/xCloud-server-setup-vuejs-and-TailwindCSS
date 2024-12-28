@@ -38,7 +38,7 @@ const defaultSelectedBlueprint = bluePrintList.value[0].id
           <div v-for="(item, index) in bluePrintList.slice(0, 3)" :key="index">
             <BlueprintItems
               :item="item"
-              :index="index + 1"
+              :index="index"
               v-model:defaultSelectedBlueprint="defaultSelectedBlueprint"
             />
           </div>

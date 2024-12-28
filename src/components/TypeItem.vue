@@ -1,14 +1,16 @@
 <script setup>
-const model = defineModel("type", { default: "live" });
+const serverType = defineModel("serverType");
 
 const serverTypeList = [
   {
+    id: 1,
     title: "Go Live",
     img: "/images/live.png",
     value: "live",
     text: "Get your site up and running for the world to see by simply pointing your domain to the server.",
   },
   {
+    id: 2,
     title: "Staging Environment",
     img: "/images/staging.png",
     value: "staging",
@@ -17,7 +19,7 @@ const serverTypeList = [
 ];
 
 const selectType = (value) => {
-  model.value = value;
+  serverType.value = value;
 };
 </script>
 
@@ -39,12 +41,12 @@ const selectType = (value) => {
         name="serverType"
         :value="item.value"
         class="hidden peer"
-        :checked="item.value === model"
+        :checked="item.value === serverType"
         @change="selectType(item.value)"
       />
       <label
         :for="'serverType' + index"
-        class="w-full flex items-center border hover:bg-lightBackgroundSecondary dark:hover:bg-[#56678327] border-lightBorder dark:border-[#313A6C] p-3 cursor-pointer rounded-md peer-checked:border-2 peer-checked:border-darkPrimary"
+        class="type-lable"
       >
         <div class="icon shrink-0">
           <img :src="item.img" alt="" class="h-12" />
